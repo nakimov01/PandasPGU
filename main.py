@@ -1,16 +1,12 @@
-# This is a sample Python script.
+import random
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+List = [round(random.uniform(-99.999, 100), 2) for x in range(10)]  # Создание списка из 10 элементов случайными числами
+Avg__Val = round(sum(List) / 10, 2)  # Среднее значение списка из 10 элементов
+print(List)
+print(Avg__Val)
+List.insert(0, Avg__Val)  # Добавление среднего значения в начало списка
+print(List, "\n")
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+N, M = 5, 5
+Matr = [[round(random.uniform(-99.999, 100), 2) for i in range(N)] for j in range(M)]  # Создание матрицы 5x5
+for Row in Matr: print(*Row)
