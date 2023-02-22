@@ -11,13 +11,13 @@ print('A2 ', '__________________________________________________________________
 
 N, M = 5, 5
 Matr = [[round(random.uniform(-100, 100), 2) for i in range(N)] for j in range(M)]  # Создание матрицы 5x5
-
+avg_res = 0
 res_sum = 0
 for i in range(len(Matr)):
     for j in range(len(Matr[i])):
         print(Matr[i][j], end=' ')
     print()
-print('______________________________________________________________________________', '\n')
+print('_____________________________________________________________________________', '\n')
 for i in range(len(Matr)):
     for j in range(len(Matr[i])):
         res_sum += Matr[i][j]
@@ -26,10 +26,10 @@ print('_________________________________________________________________________
 for i in range(len(Matr)):
     for j in range(len(Matr[i])):
         if i == j:
-            res_sum += Matr[i][j]
+            avg_res += Matr[i][j]
             print(Matr[i][j])
 
-print('\n', "Среднее значение элементов на главной диагонали: ", round((res_sum / 5), 2), "\n")
+print('\n', "Среднее значение элементов на главной диагонали: ", round((avg_res / 5), 2), "\n")
 print('______________________________________________________________________________', '\n')
 print('Элеметы побочной диагонали: ')
 for i in range(len(Matr)):
