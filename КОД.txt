@@ -1,0 +1,173 @@
+import pandas as pd
+df = pd.read_csv('econm.csv', encoding = 'windows-1251')
+
+df head()
+1-1
+
+user_data = df[['tc', 'art_sp'}].rename(colums=('tc':'user_id', 'art_sp':'brand_info'})
+user_data
+
+1-1
+
+brand_info = 'MARAVILLA 500 G Store Brand'
+brand_info.split()
+
+1-1
+
+brand_info = 'MARAVILLA 500 G Store Brand'
+brand_info.split(' *)(-1]
+
+1-1
+
+def split_brand_info (full_brand_info):
+return full_brand_info.split(' ')[-1]
+
+user_data.brand_info.apply(split_brand_info)
+1-1
+
+def split_brand_info (full_brand_info):
+return full_brand_info.split(' *){-1]
+
+user_data[ 'brand_name'] = user_data.brand_info.apply(split_brand_info)
+
+user_data
+
+1-1
+
+user_data['brand_name'] = user_data.brand_info.apply(lanbda x: x.split(' ')[-1])
+user_data
+
+1-1
+
+users_purchase = (user_data.groupby('user_id', as_index = False)
+
+.agg({'brand_name' : 'count' })
+.rename(columns={'brand_name' : 'purchases'}))
+
+users_purchase. shape
+
+1-1
+
+users_purchase. head()
+
+1-1
+
+users_purchases.purchases.median()
+
+1-1
+
+users_purchases.describe()
+
+1-1
+users_purchase = (user_data.groupby('user_id', as_index = False)
+.agg({'brand_name' : 'count })
+.rename(columns={'brand_name' : 'purchases' })
+.query('purchases >= 5') )
+
+users_purchase. shape
+
+1-1
+
+users_purchase. head()
+
+1-1
+
+users_purchases.describe()
+
+1-1
+
+(user_data.groupby(['user_id','brand_name'], as_index=False)
+.agg({'brand_info' :'count'})
+.sort_values(['user_id', 'brand_info'], ascending=[False, False]))
+
+1-1
+
+(user_data.groupby(['user_id','brand_name'], as_index=False)
+.agg({'brand_info' : 'count'})
+.sort_values(['user_id', 'brand_info'], ascending=[False, False])
+.groupby('user_id')
+.head(1))
+
+1-1
+
+lovely_brand_purchases_df =(user_data.groupby(['user_id','brand_name'], as_index=False)
+.agg({'brand_info' :'count'})
+.sort_values(['user_id', 'brand_info'], ascending=[False, False])
+.groupby('user_id)
+.head(1)
+.rename (colums=('brand_nane':'lovely brand', 'brand_info':*lovely_brand_purchases'}))
+
+1-1
+
+users_unique_brands = (user_data.groupby('user_id', as_index = False)
+.agg ({'brand_name': pd.Series.nunique})
+.rename(columns={'brand_name' : 'unique_brands'}))
+
+users_unique_brands
+1-1
+
+x = pd.Series({1, 2, 3})
+
+x
+
+1-1
+
+d = pd.DataFrame({'x': [1, 2, 3], 'y' : ['a','b','c']})
+
+d
+
+1-1
+
+??pd.DataFrame.merge
+
+1-1
+
+loyalty_data = (users_purchase.merge(users_unique_brands, on=''user_id')
+.merge(lovely_brand_purchases_df, on='user_id'))
+
+loyalty_data
+
+1-1
+loyal_users = loyalty_data [loyalty_data.unique_brands == 1]
+
+loyal_users
+1-1
+
+1-1
+loyalty_data ['loyalty_score'] = loyalty_data.lovely_brand_purchases / loyalty_data.purchases
+
+loyalty_data
+
+1-1
+
+loyalty_data.sort_values( 'loyalty score', ascending=False)
+
+1-1
+
+import pandas as pd
+
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+%matplotlib inline
+
+1-1
+
+ax = sns.distplot(loyalty_data.loyalty_score)
+
+1-1
+
+ax = sns.distplot (loyalty_data.loyalty_score, kde=False)
+
+1-1
+
+loyalty_data.loyalty_score.median()
+
+1-1
+
+ax = sns.barplot(x='lovely brand', y='loyalty_score', data=brand_loyalty)
+
+1-1
+
+ax = sns.barplot(x='lovely brand', y='user_id', data=brand_loyalty)
+
